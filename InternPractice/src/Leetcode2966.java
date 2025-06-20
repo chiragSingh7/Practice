@@ -1,5 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Leetcode2966 {
-    import java.util.Arrays;
 
     class Solution {
         public int[][] divideArray(int[] nums, int k) {
