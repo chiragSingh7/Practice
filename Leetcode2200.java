@@ -34,3 +34,31 @@ public class Leetcode2200 {
 
         return ans;
 }
+
+
+/* a better approach can be
+import java.util.ArrayList;
+
+class Solution {
+    public List<Integer> findKDistantIndices(int[] nums, int key, int k) {
+        int flag, temp;
+        int start = 0;
+        int n = nums.length;
+        ArrayList<Integer> ans = new ArrayList<>();
+
+        for(int i=0 ; i<n ; i++){
+            if(nums[i] == key){
+                temp = Math.max(0, i-k);
+                flag = Math.min(n-1, i+k);
+
+                while(start <= flag){
+                    if(start >= temp) ans.add(start);
+                    start++;
+                }
+            }
+        }
+
+        return ans;
+    }
+}
+ */
