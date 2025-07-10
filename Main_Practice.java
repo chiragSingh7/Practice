@@ -49,23 +49,23 @@ public class Main_Practice {
         Employee emp1 = new Employee("Minal Jaiswal" , "UAI0001" , "jhdsa@gmail.com");
         Employee emp2 = new Employee("Akshat Gaur" , "UEI0001" , "hsja@gmail.com");
 
-        Gson gson = new GsonBuilder().setPrettyPrinting().create();
+//        Gson gson = new GsonBuilder().setPrettyPrinting().create();
 //        String myJson = gson.toJson(emp);
 //        System.out.println(myJson);
 
         //Write to a file
 
-        try{
-            List<Employee> allEmp = new ArrayList<>();
-            FileWriter writer = new FileWriter("User.json");
-            allEmp.add(emp);
-            allEmp.add(emp1);
-            allEmp.add(emp2);
-            gson.toJson(allEmp, writer);
-            writer.close();
-        }catch(IOException e){
-            throw new RuntimeException(e);
-        }
+//        try{
+//            List<Employee> allEmp = new ArrayList<>();
+//            FileWriter writer = new FileWriter("User.json");
+//            allEmp.add(emp);
+//            allEmp.add(emp1);
+//            allEmp.add(emp2);
+//            gson.toJson(allEmp, writer);
+//            writer.close();
+//        }catch(IOException e){
+//            throw new RuntimeException(e);
+//        }
 
         //Read from a file
 
@@ -79,21 +79,46 @@ public class Main_Practice {
 //
 
         //write as list
-        try{
+//        try{
             // as an array
 //                FileReader reader = new FileReader("User.json");
 //                Employee[] emps = gson.fromJson(reader, Employee[].class);
 
             // as a list
+//            FileReader reader = new FileReader("User.json");
+//            Type empListType = new TypeToken<ArrayList<Employee>>(){}.getType();
+//            List<Employee> allEmp = gson.fromJson(reader, empListType);
+//
+//            for(Employee e : allEmp){
+//                System.out.println(e);
+//            }
+//        } catch (Exception e) {
+//            throw new RuntimeException(e);
+//        }
+
+        try{
             FileReader reader = new FileReader("User.json");
+            Gson gson = new Gson();
+            boolean found = false;
+
             Type empListType = new TypeToken<ArrayList<Employee>>(){}.getType();
             List<Employee> allEmp = gson.fromJson(reader, empListType);
 
             for(Employee e : allEmp){
-                System.out.println(e);
+                if(e.getID().equals("UEH0002")){
+                    System.out.println("ID found!!");
+                    found = true;
+                    break;
+                }
+            }
+
+            if(!found){
+                System.out.println("ID not found");
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
+        //search in a file
     }
 }
